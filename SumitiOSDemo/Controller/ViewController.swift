@@ -18,7 +18,6 @@ class ViewController: UIViewController {
             tblPostData.reloadData()
         }
     }
-    let optimizer = HeavyComputationOptimizer() // Initialize HeavyComputationOptimizer
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +52,8 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("value of body(post data) =",arrPostData[indexPath.row].body ?? "")
- 
+        //        print("value of body(post data) =",arrPostData[indexPath.row].body ?? "")
+        
         let MainInStoryboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = MainInStoryboard.instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
             vc.postData = arrPostData[indexPath.row]

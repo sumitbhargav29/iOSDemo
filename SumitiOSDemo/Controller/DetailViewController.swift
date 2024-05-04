@@ -28,4 +28,5 @@ class DetailViewController: UIViewController {
     @IBAction func btnBackOnClick(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
 }

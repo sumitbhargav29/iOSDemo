@@ -219,6 +219,7 @@
 			children = (
 				88394A0A2BE467A40004C890 /* AppExtension.swift */,
 				88394A0B2BE467A40004C890 /* NetworkReachability.swift */,
+				885C1F512BE5C9B600881CBD /* HeavyComputationOptimizer.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -245,7 +246,6 @@
 			children = (
 				88394A142BE467DC0004C890 /* ViewController.swift */,
 				885C1F532BE5CBBD00881CBD /* DetailViewController.swift */,
-				885C1F512BE5C9B600881CBD /* HeavyComputationOptimizer.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
