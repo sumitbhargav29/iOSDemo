@@ -1,9 +1,9 @@
 import UIKit
- 
+
 class PostTVC: UITableViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
-    var viewController: ViewController?
+    var postID: Int?
     let optimizer = HeavyComputationOptimizer()
     
     override func awakeFromNib() {
@@ -11,13 +11,23 @@ class PostTVC: UITableViewCell {
         // Initialization code
     }
     
-    func setPostData(post: PostModel, viewController: ViewController) {
-        lblTitle.text = "\(String(describing: post.id!)): \(String(describing: post.title!))"
-        self.viewController = viewController
+    func setPostData(post: PostModel) {
+        // Capture post ID to ensure correctness during async completion
+        self.postID = post.id
         
-        // Heavy computation optimization with callback memorization
-        optimizer.optimizeHeavyComputation(for: post) { additionalDetails in
-            self.lblTitle.text = "\(post.id!): \(post.title!)\n\(additionalDetails)"
+        lblTitle.text = "\(post.id ?? 0): \(post.title ?? "")"
+        
+        // Check if the result is cached for this post
+        if let cachedResult = optimizer.getCache(for: post.id) {
+            self.lblTitle.text = "\(post.id ?? 0): \(post.title ?? "")\n\(cachedResult)"
+        } else {
+            // Heavy computation optimization with callback memorization
+            optimizer.optimizeHeavyComputation(for: post) { [weak self] additionalDetails in
+                // Check if the post ID hasn't changed before updating UI
+                if self?.postID == post.id {
+                    self?.lblTitle.text = "\(post.id ?? 0): \(post.title ?? "")\n\(additionalDetails)"
+                }
+            }
         }
     }
 }

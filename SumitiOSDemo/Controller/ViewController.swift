@@ -47,7 +47,7 @@ extension ViewController : UITableViewDelegate,UITableViewDataSource {
             fatalError("AddressCell cell is not found")
         }
         let post = arrPostData[indexPath.row]
-        cell.setPostData(post: post, viewController: self)
+        cell.setPostData(post: post)
         return cell
     }
     
