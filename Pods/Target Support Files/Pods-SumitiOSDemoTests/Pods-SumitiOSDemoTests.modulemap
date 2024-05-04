@@ -1,0 +1,6 @@
+framework module Pods_SumitiOSDemoTests {
+  umbrella header "Pods-SumitiOSDemoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
